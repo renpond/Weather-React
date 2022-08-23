@@ -14,5 +14,7 @@ export default function Weather(props) {
   weather?q=${props.city}&appid=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(handleResponse);
-  return <Loader.InfinitySpin />;
+  return (
+    <Loader.InfinitySpin color="aqua" height={100} width={100} timeout={3000} />
+  );
 }
