@@ -14,5 +14,5 @@ export default function Weather(props) {
   weather?q=${props.city}&appid=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(handleResponse);
-  return <Loader.Puff color="Teal" />;
+  return <Loader.Puff color="Teal" timeout={3000} />;
 }
