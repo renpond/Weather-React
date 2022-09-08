@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import WeatherInfo from "./WeatherInfo";
-import WeatherForecast from "./WeatherForcast";
+import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
-import * as Loader from "react-loader-spinner";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -18,7 +17,7 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      wind: response.data.wind.speed,
+      wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       feel: response.data.main.feels_like,
       mainIcon: `./images/icons/${response.data.weather[0].icon}.gif`,
@@ -36,8 +35,7 @@ export default function Weather(props) {
 
   function search() {
     let apiKey = "54cb345a2c3729ba77c24984961b3eee";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/
-  weather?q=${city}&appid=${apiKey}&units=imperial`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
     axios.get(apiUrl).then(handleResponse);
   }
 
@@ -50,7 +48,7 @@ export default function Weather(props) {
               <div className="col-8">
                 <input
                   type="search"
-                  placeholder="Search a city... "
+                  placeholder="Enter a city... "
                   className="form-control"
                   autoFocus="on"
                   onChange={handleCityChange}
@@ -73,6 +71,6 @@ export default function Weather(props) {
     );
   } else {
     search();
-    return <Loader.Puff color="Teal" timeout={3000} />;
+    return <div>Loading...</div>;
   }
 }

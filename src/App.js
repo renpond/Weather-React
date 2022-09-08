@@ -1,5 +1,5 @@
 import React from "react";
-import Weather from "./weather";
+import Weather from "./Weather";
 import "./App.css";
 
 export default function App() {
@@ -9,18 +9,14 @@ export default function App() {
         <Weather defaultCity="San Antonio" />
 
         <footer>
-          This project was coded by Renee' Pond and is{" "}
+          This project was coded by Renee' Pond and is open-sourced on{" "}
           <a
             href="https://github.com/renpond/Weather-React.git"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Open Sourced on Github
+            GitHub
           </a>{" "}
-          and{" "}
-          <a href="" target="_blank" rel="noopener noreferrer">
-            hosted on Netlify
-          </a>
         </footer>
       </div>
     </div>
